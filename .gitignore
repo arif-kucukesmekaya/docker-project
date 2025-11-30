@@ -1,0 +1,9 @@
+logs/*.log
+log_archive/*
+!logs/.gitkeep
+!log_archive/.gitkeep
+*.pyc
+__pycache__/
+.env
+.DS_Store
+
