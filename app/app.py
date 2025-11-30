@@ -8,7 +8,6 @@ from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
-# Logging yapılandırması
 if not os.path.exists('logs'):
     os.makedirs('logs')
 
@@ -21,7 +20,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Veritabanı bağlantı bilgileri
 DB_CONFIG = {
     'host': os.getenv('DB_HOST', 'postgres'),
     'database': os.getenv('DB_NAME', 'mydb'),
