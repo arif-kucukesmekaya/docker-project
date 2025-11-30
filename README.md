@@ -29,7 +29,8 @@ Bu proje, Docker container'ları kullanarak bir web uygulaması, veritabanı ve 
   - Loglama desteği
 
 ### 2. PostgreSQL Veritabanı
-- **Port:** 5432
+- **Port:** 5433 (host) → 5432 (container)
+- **Not:** Host port 5433 kullanılıyor çünkü 5432 zaten kullanımda
 - **Veritabanı:** mydb
 - **Kullanıcı:** postgres
 - **Şifre:** postgres
@@ -241,6 +242,8 @@ docker-compose logs postgres
 
 ### Port çakışması
 Eğer 80, 8080 veya 5432 portları kullanılıyorsa, `docker-compose.yml` dosyasındaki port numaralarını değiştirin.
+
+**Not:** PostgreSQL portu varsayılan olarak 5433'e ayarlanmıştır (5432 zaten kullanılıyorsa).
 
 ## 📊 Proje Yapısı
 
