@@ -1,6 +1,7 @@
 # Docker Uygulama Ortamı
 
 Bu proje, Docker ve Docker Compose kullanılarak oluşturulmuş tam kapsamlı bir web uygulama ortamıdır.
+Amaç Docker'ın en iyi şekilde anlaşılması ve uygulanmasıdır.
 
 ## 📋 İçindekiler
 
@@ -21,7 +22,7 @@ Bu proje, Docker container'ları kullanarak bir web uygulaması, veritabanı ve 
 
 ### 1. Flask Web Uygulaması
 - **Port:** 80 (Nginx üzerinden)
-- **Açıklama:** Kullanıcıların isim ve mesaj girebileceği basit bir web arayüzü
+- **Açıklama:** Kullanıcıların isim ve mesaj girebileceği bir web arayüzü
 - **Özellikler:**
   - Form ile mesaj gönderme
   - Tüm mesajları listeleme
@@ -176,48 +177,10 @@ docker-compose logs -f flask
 
 Cron görevi, her 2 dakikada bir log dosyasını arşivler ve veritabanı yedeği alır.
 
-### Cron Kurulumu
-
-1. **Cron scriptini çalıştırılabilir yapın:**
-```bash
-chmod +x cron-job.sh
-```
-
-2. **Crontab'ı düzenleyin:**
-```bash
-crontab -e
-```
-
-3. **Şu satırı ekleyin:**
-```bash
-*/2 * * * * /home/arif/docker-project/cron-job.sh
-```
-
-Bu, her 2 dakikada bir cron-job.sh scriptini çalıştırır.
-
 ### Cron Görevi Ne Yapar?
 - Log dosyasını `log_archive/` klasörüne kopyalar
 - Veritabanı yedeği alır (SQL formatında)
 - 30 günden eski dosyaları temizler
-
-## 📸 Ekran Görüntüleri
-
-Ekran görüntüleri `screenshots/` klasöründe bulunmaktadır.
-
-### Gerekli Ekran Görüntüleri
-
-1. **Web Uygulaması** - http://localhost
-   - Ana sayfa ve form görünümü
-   - Mesaj listesi görünümü
-
-2. **Adminer** - http://localhost:8080
-   - Giriş sayfası
-   - Veritabanı ve messages tablosu görünümü
-
-3. **Docker Container'ları**
-   - `docker compose ps` komutunun çıktısı
-
-Detaylı bilgi için `screenshots/README.md` dosyasına bakın.
 
 ## 🔧 Sorun Giderme
 
@@ -238,30 +201,4 @@ docker-compose ps postgres
 
 # Veritabanı loglarını kontrol edin
 docker-compose logs postgres
-```
-
-### Port çakışması
-Eğer 80, 8080 veya 5432 portları kullanılıyorsa, `docker-compose.yml` dosyasındaki port numaralarını değiştirin.
-
-**Not:** PostgreSQL portu varsayılan olarak 5433'e ayarlanmıştır (5432 zaten kullanılıyorsa).
-
-## 📊 Proje Yapısı
-
-```
-docker-project/
-├── app/
-│   ├── app.py              # Flask uygulaması
-│   ├── templates/
-│   │   └── index.html      # Web arayüzü
-│   ├── requirements.txt    # Python bağımlılıkları
-│   └── Dockerfile         # Flask container imajı
-├── nginx/
-│   └── nginx.conf         # Nginx konfigürasyonu
-├── logs/                  # Log dosyaları
-├── log_archive/           # Arşivlenmiş loglar
-├── screenshots/          # Ekran görüntüleri
-├── docker-compose.yml    # Docker Compose konfigürasyonu
-├── myapp.service         # Systemd servis dosyası
-├── cron-job.sh           # Cron görev scripti
-└── README.md             # Bu dosya
 ```
