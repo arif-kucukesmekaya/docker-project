@@ -265,19 +265,3 @@ docker-project/
 ├── cron-job.sh           # Cron görev scripti
 └── README.md             # Bu dosya
 ```
-
-## 🔐 Güvenlik Notları
-
-- Bu proje geliştirme/öğrenme amaçlıdır
-- Production ortamında şifreleri environment variable olarak kullanın
-- Veritabanı şifrelerini değiştirin
-- HTTPS kullanmayı düşünün
-
-## 📝 Lisans
-
-Bu proje eğitim amaçlıdır.
-
-## 👤 Yazar
-
-Docker ve Linux bilgileriyle oluşturulmuş bir uygulama ortamı projesi.
-
